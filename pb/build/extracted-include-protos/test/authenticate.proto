@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package org.ilt.example.auth;
+
+import "google/protobuf/wrappers.proto";
+
+//For go
+option go_package = "github.com/ilterpehlivan/interfaces/auth";
+
+//For now no need but keep java in case needed
+option java_package = "org.ilt.example.auth";
+option java_outer_classname = "AuthProto";
+option java_multiple_files = true;
+
+service AuthInterface{
+  //given token as parameter if authenticate then return user details
+  //otherwise error
+  rpc Authenticate(google.protobuf.StringValue) returns (UserInfo); 
+}
+
+message UserInfo{
+ string user_id = 1;
+ string user_name = 2;
+}
+
+
